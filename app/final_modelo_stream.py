@@ -47,7 +47,7 @@ elif page == "Acerca de la BRFSS":
 elif page == "Impacto económico en USA en 2015":
     st.title("Impacto económico en USA en 2015")
     st.markdown("""
-    En el año 2015, el coste sanitario de la diabetes en Estados Unidos ascendió a más de 400.000 millones de euros. Se estima que dicha cifra se incremente considerablemente a lo largo de los próximos años hasta llegar a superar los 600.000 millones de euros en el año 2030.
+    En el año 2015, el coste sanitario de la diabetes en Estados Unidos ascendió a más de 444.000 millones de euros. Se estima que dicha cifra se incremente considerablemente a lo largo de los próximos años hasta llegar a superar los 666.000 millones de euros en el año 2030.
     """)
 elif page == "Diabetes en USA":
     st.title("Diabetes en USA")
@@ -175,11 +175,21 @@ elif page == "Predicción":
         st.subheader("👤 Información Personal")
         sex = st.selectbox("⚧ Sexo", list(sex_options.keys()))
         age = st.selectbox("📅 Edad", list(age_options.keys()))
+        
+        # Calculadora de IMC
+        st.markdown("#### Calculadora de IMC")
+        peso = st.number_input("⚖️ Peso (kg)", min_value=30.0, max_value=200.0, value=70.0, step=0.1)
+        estatura = st.number_input("📏 Estatura (m)", min_value=1.0, max_value=2.5, value=1.70, step=0.01)
+        if estatura > 0:
+            bmi_calculado = round(peso / (estatura ** 2), 2)
+        else:
+            bmi_calculado = 0.0
+        st.write(f"**Tu IMC calculado es:** {bmi_calculado}")
         bmi = st.number_input(
             "⚖️ Índice de Masa Corporal (IMC)", 
             min_value=10.0, 
             max_value=50.0, 
-            value=25.0,
+            value=bmi_calculado,
             step=1.0,
             help="El IMC se calcula dividiendo el peso (kg) entre la altura al cuadrado (m²)"
         )
