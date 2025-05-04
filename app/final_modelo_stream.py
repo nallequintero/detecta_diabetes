@@ -16,7 +16,7 @@ page = st.sidebar.radio("Navegación", ["Introducción", "Diabetes y sus tipos",
                                        "Importancia de las variables", "Predicción", "Referencias"])
 
 # Cargar el modelo
-model = pickle.load(open('app/models/diabetes_histboost_model.pkl', 'rb'))
+model = pickle.load(open('models/diabetes_histboost_model.pkl', 'rb'))
 class_dic = {0: 'diabetes', 1: 'no tiene diabetes'}
 
 if page == "Introducción":
