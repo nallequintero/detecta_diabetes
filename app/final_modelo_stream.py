@@ -16,7 +16,7 @@ page = st.sidebar.radio("Navegación", ["Introducción", "Diabetes y sus tipos",
                                        "Importancia de las variables", "Predicción", "Referencias"])
 
 # Cargar el modelo
-model = pickle.load(open('app/models/diabetes_histboost_model.pkl', 'rb'))
+model = pickle.load(open('models/diabetes_histboost_model.pkl', 'rb'))
 class_dic = {0: 'diabetes', 1: 'no tiene diabetes'}
 
 if page == "Introducción":
@@ -83,7 +83,7 @@ elif page == "Modelos":
 
     # Mostrar métricas de modelos si existe el archivo
     try:
-        metricas_df = pd.read_csv('/workspaces/detecta_diabetes/notebooks/metricas_modelos.csv')
+        metricas_df = pd.read_csv('metricas_modelos.csv')
         st.subheader("Métricas de los Modelos")
         # Mejorar visualización: ancho completo, formato, scroll y estilos
         st.dataframe(
@@ -99,14 +99,14 @@ elif page == "Modelo seleccionado":
     st.markdown("A continuación se muestra la matriz de confusión del modelo HistBoost:")
 
     # Mostrar matriz de confusión si existe el archivo
-    st.image("/workspaces/detecta_diabetes/images/modelo_final.png")
+    st.image("images/modelo_final.png")
 
 elif page == "Importancia de las variables":
     st.title("Importancia de las Variables")
     st.markdown("A continuación se muestra la importancia de las variables del modelo HistBoost:")
 
     # Mostrar gráfico de importancia de variables si existe el archivo
-    st.image("/workspaces/detecta_diabetes/images/importancia.png")
+    st.image("images/importancia.png")
     st.markdown("El análisis identifica las cinco variables más influyentes en el modelo, proporcionando " \
     "información clave sobre los factores que pueden estar relacionados con la diabetes:"
     "\n\n" \
